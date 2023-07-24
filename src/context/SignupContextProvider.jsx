@@ -27,14 +27,18 @@ function SignupContextProvider(props) {
     function getImages() {
         fetch('http://localhost:3000/getImages')
               .then(res => res.json())
-              .then(data => console.log(data))
+              .then(data => {
+                console.log(data)
+                setImagesData(data)
+              })
     }
 
     return (
         <signupContext.Provider value={ 
             {
                 signupBuild: signupBuild ,
-                getImages: getImages
+                getImages: getImages,
+                imagesData: imagesData
              }}
         >
             {props.children}
