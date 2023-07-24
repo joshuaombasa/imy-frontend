@@ -7,14 +7,20 @@ import { signupContext } from './context/SignupContextProvider'
 
 function App() {
 
-  const { getImages } = useContext(signupContext)
+  const { getImages, imagesData } = useContext(signupContext)
  
-  
+  let iamgesJsx 
+  if (imagesData) {
+    iamgesJsx = imagesData.map(image => {
+      return  <img key={image.id} src={image.url} alt={image.name} />
+    }) 
+  }
 
   return (
     <>
      <Hero/>
      <button onClick={() => getImages()}>Get images</button>
+     {imagesData && iamgesJsx }
     </>
   )
 }
