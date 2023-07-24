@@ -3,6 +3,7 @@ import React from "react";
 const signupContext = React.createContext()
 
 function SignupContextProvider(props) {
+    const [imagesData, setImagesData] = React.useState()
 
     function signupBuild(formData) {
 
@@ -23,8 +24,19 @@ function SignupContextProvider(props) {
             .then(data => console.log(data))
     }
 
+    function getImages() {
+        fetch('http://localhost:3000/getImages')
+              .then(res => res.json())
+              .then(data => console.log(data))
+    }
+
     return (
-        <signupContext.Provider value={{signupBuild: signupBuild}}>
+        <signupContext.Provider value={ 
+            {
+                signupBuild: signupBuild ,
+                getImages: getImages
+             }}
+        >
             {props.children}
         </signupContext.Provider>
     )
