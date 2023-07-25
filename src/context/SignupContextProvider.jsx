@@ -3,7 +3,10 @@ import React from "react";
 const signupContext = React.createContext()
 
 function SignupContextProvider(props) {
+
     const [imagesData, setImagesData] = React.useState()
+
+    const [imageLink, setImageLink] = React.useState(null)
 
     function signupBuild(formData) {
 
@@ -24,26 +27,33 @@ function SignupContextProvider(props) {
             .then(data => console.log(data))
     }
 
+  
+
+    
+
     function getImages() {
         fetch('http://localhost:3000/getImages')
-              .then(res => res.json())
-              .then(data => {
+            .then(res => res.json())
+            .then(data => {
                 console.log(data)
                 setImagesData(data)
-              })
+
+            })
     }
 
+    console.log(imagesData)
+
     return (
-        <signupContext.Provider value={ 
+        <signupContext.Provider value={
             {
-                signupBuild: signupBuild ,
+                signupBuild: signupBuild,
                 getImages: getImages,
                 imagesData: imagesData
-             }}
+            }}
         >
             {props.children}
         </signupContext.Provider>
     )
 }
 
-export {SignupContextProvider, signupContext}
+export { SignupContextProvider, signupContext }
