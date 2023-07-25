@@ -42,7 +42,7 @@ export default function Hero() {
         setFormData({name: '', location: '', userImage: null})
       }
     
-      console.log(formData)
+      // console.log(formData)
     
       return (
         <>
