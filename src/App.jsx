@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 
 import './App.css'
 import Hero from './Hero'
+import Users from './Users'
 
 import { signupContext } from './context/SignupContextProvider'
 
@@ -21,6 +22,7 @@ function App() {
      <Hero/>
      <button onClick={() => getImages()}>Get images</button>
      {imagesData && iamgesJsx }
+     {imagesData && <Users/>}
     </>
   )
 }
