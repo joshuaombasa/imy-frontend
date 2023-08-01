@@ -20,12 +20,16 @@ function SignupContextProvider(props) {
         data.append('userImage', formData.userImage)
 
         const uploadData = async () => {
-            const res = await  fetch('http://localhost:3000/upload', {
+            try {
+                const res = await  fetch('http://localhost:3000/upload', {
                                         method: 'POST',
                                         body: data
                                     })
             const data = await res.json()
             console.log(data)
+            } catch(error) {
+                console.log(error)
+            }
         }
     }
 
