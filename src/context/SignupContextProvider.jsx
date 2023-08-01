@@ -39,13 +39,16 @@ function SignupContextProvider(props) {
 
     function getImages() {
 
+       try {
         const getImgs = async() => {
-            const res = fetch('http://localhost:3000/getImages')
+            const res = await fetch('http://localhost:3000/getImages')
 
             const data = await res.json()
-            setImagesData(data)
-                
+            setImagesData(data)    
         }
+       } catch (error) {
+        console.error(error)
+       }
         
     }
 
